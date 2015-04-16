@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Beginners</title>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="jquery.mobile-1.3.2.min.css"/>
+	<script src="jquery-1.9.1.min.js"></script>
+	<script src="jquery.mobile-1.3.2.min.js"></script>
+	
+	<style>
+	h2{
+	align: center;
+	}
+	</style>
+</head>
+
+<body>
+
+<div data-role="page" id="page1" data-theme="a">
+<b> <h1 data-role="header" color="yellow" align="center">Level 3: Advanced</h1></b>
+<h2 data-role="header" align="center" color="orange">Hardware Tutorials</h2>
+			<a data-role="button" href="#page2" data-transition="flip" data-icon="forward"> Controlling DC Motors
+</a>
+			<a data-role="button" href="#page3" data-transition="flip" data-icon="forward"> Feedback Motor Control
+</a>
+				
+<h2 data-role="header"align="center" color="orange">Programming Tutorials</h2>
+						<a data-role="button" href="#page4" data-transition="flip" data-icon="forward"> Programming Techniques
+</a>
+						<a data-role="button" href="#page5" data-transition="flip" data-icon="forward"> Multitasking</a>
+						
+ <a data-role="button" href="C:\Users\singhal\Desktop\my app\tute1.html" data-transition="flip" data-icon="back"> Back</a>
+</div>
+
+
+<div data-role="page" id="page2" data-theme="b">
+		<h1 data-role="header" align="center"> Controlling DC Motors</h1>
+		<p data-role="content"> 
+		The principles of DC motors are covered in the beginner and intermediate sections of this tutorial. This section will cover the electronics needed to interface them to a Basic X microcontoller or other digital chip.<br>
+The easiest way of controlling motors is using the Robocore. This board contains the driver electronics to control up to 4 DC motors or 2 stepper motors, and features direction LED's for easy debugging of circuits.<br>
+However, if you want to build your own motor drivers to use in custom projects there are various methods that you can use.<br>
+A circuit called an H bridge circuit will give you direction control of your DC motor. Below is the circuit diagram.<br><br>
+
+<img src="images//a1.gif" height="150" width="140" border=2 align="right"></img ><br>
+ 
+Here's how the circuit works.
+Transistors are electronic switches, they allow you to turn on large voltages (the motor power supply) using a very small current (like the output pin of the Basic X). Each pair of transistors is connected to a pin on the micro controller and control the polarity of the current supplied to the motor. The actual components required would depend on the size of the motors that you want to use.<br>
+The diodes in the circuit are very important and are called fly back diodes. They are there to prevent voltage spikes from the motors from destroying the transistors. When a motor rotates and changes direction the coils of wire inside it act as a generator and produce a current. This current is called the back electro motive force, or back E.M.F. for short. This current travels back through the circuit, in the form of powerful voltage spikes, to the transistor. Now, because transistors only allow current to flow in one direction the current hits a bottle neck as the transistor tries to stop the reverse current. If this current is particularly large, say when your reversing the direction of the motor, it will simply blow the transistor, giving your new circuit a pretty short life.<br><br>
+The diodes job is to protect the transistor. It allows this back E.M.F. to bypass the transistor and travel safely back to the battery.<br>
+The circuit can be powered using whatever voltage is suitable for your motors. If you are using two power supplies, one to power your Basic X and another to power your motors, you must connect the ground of each supply together or your circuit may not work properly.<br><br>
+If you're looking for specific components to build the circuit the following will handle most motors up to about 12 volts.<br><br><b>
+Transistors: TIP41 NPN power transistor<br>
+Diodes: IN4002<br>
+Resistors: 2.2Kohm, 0.25 watt</b><br>
+		
+		</p>
+		<a data-role="button" href="#page3" data-transition="flip" data-icon="forward">Feedback Motor Control </a>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+	
+
+	
+	<div data-role="page" id="page3" data-theme="b">
+		<h1 data-role="header" align="center"> Feedback Motor Control</h1>
+		<p data-role="content"> 
+		
+		This tutorial will look at how you can use feedback to control and regulate the speed of motors (or anything else that rotates). Let's say that you want your robot to travel at a steady speed that uses 60% power to the motors. This constant power supply would work fine on flat ground but what would happen if it encountered a hill, would it have enough power to handle a steep incline or would it slow to a crawling speed.<br><br>
+This problem could be overcome with feedback. If you could somehow sense the rotational speed of the wheels you could deliver more power to the motors if they slow down (climbing a hill or overcoming an object) or apply some breaking if they are rotating too fast (travelling down hill), but always maintaining a steady speed.<br><br>
+ I'm going to talk about using shaft encoder's record how fast the wheels are turning.<br>
+Shaft encoders use infra red emitters and detectors that are placed fairly close to each other (about half an inch or less). When there is a direct line of sight between them the detector is 'on' and produces a voltage (normally around 1 to 3 volts). When the line of sight is blocked the detector doesn't pick up any infra red light so is 'off', producing 0 volts.<br><br>
+For a perfect example of how shaft encoders work take a look inside your mouse. You will see a disk with holes around the edges. On either side of the disk are an infra red emitter and infra red detector. When you move the mouse, the mouse ball's rotation causes the perforated disk to rotate. As the disk rotates the path between the IR emitter and detector is made and broken, causing the detector to create a string of electrical pulses. By monitoring the frequency of the pulses you can deduce how far the wheel has turned and the time it took.<br><br>
+ Shaft encoders for robots use exactly the same principle. A card disk similar to the one on the right can attached to the drive shaft of the wheel and used to break an IR beam between the emitter and detector.<br><br>
+The diagram below shows how to connect the shaft encoder available in the components section of the Robologic shop to the Robocore. The disk rotates through the 'U' of the sensor and creates an electrical pulse at the signal line every time the IR beam is made of broken. The only external component needed is a 330 ohm resistor.<br><br>
+
+<img src="images//a2.gif" height="150" width="140" border=2 align="right"></img ><br>
+ 
+A good feature of using shaft encoders to monitor wheel movement is that they are totally friction free, meaning that there is no loss of drive power when they are used.<br>
+If the pre-moulded 'U' design does not fit your specifications then the sensor can be constructed from separate emitter and detector components wired in the same was as above and mounted on your own design. The emitter and detector may need to be shielded with some black card or something similar to prevent them from detecting any ambient infra red.<br><br>
+		</p>
+		<a data-role="button" href="#page4" data-transition="flip" data-icon="forward">Programming Techniques </a>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+
+	
+	<div data-role="page" id="page4" data-theme="b">
+		<h1 data-role="header" align="center"> Programming Techniques</h1>
+		<p data-role="content"> 
+		As your projects gain complexity it may use many different sensors and actuators. You will need a way to effectively use all this information to produce reliable results.
+There are two types of algorithm that can be used to do this. The first is called sensor fusion. This approach uses information from all of the sensors simultaneously to create a constant world model of its surroundings.<br><br>
+This sort of model is very difficult to program and requires massive amounts of computational power, and so is not really suited to the world of hobby robots.<br>
+This section of the tutorial will cover something called subsumption architecture. This is a way of building a simple behaviour model that is much simpler computationally based on priority.<br><br>
+For this example lets say that you have built a robot that is going to follow light around the room using LDR sensors. The robot also has an ultrasound proximity sensor and bump micro switches to detect obstacles.<br>
+A diagram of its subsumption architecture would look like this:<br><br>
+
+<img src="images//a3.gif" height="150" width="140" border=2 align="right"></img ><br>
+ 
+The diagram shows how priorities work in subsumption architecture.<br>
+The bump sensor takes the highest priority, which makes sense, if your robot is stuck against a wall you don't want to be worrying about following a light source.<br>
+Cruise has the lowest priority, its basically saying drive forwards until you find a light to follow (or an obstacle to avoid).<br>
+The ultrasound sensor has a lower priority than the bump sensor because you ideally want to avoid objects before you collide with them.<br>
+		
+		</p>
+		<a data-role="button" href="#page5" data-transition="flip" data-icon="forward"> Multitasking </a>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+
+	
+	<div data-role="page" id="page5" data-theme="b">
+		<h1 data-role="header" align="center">  Multitasking</h1>
+		<p data-role="content"> 
+		One of the most powerful features of the BasicX operating system is its ability to multitask. This means it can run several tasks at the same time. It's possible to divide large programs into smaller manageable tasks that can communicate with each other.<br><br>
+There is more information in the BasicX documentation about multitasking, this is a brief tutorial that aims to outline a simple implementation of multitasking and not re write the BasicX manual.<br><br>
+The following sample of code simply turns the onboard red and green led's on and off but hopefully demonstrates how multitasking is implemented in the BasicX programming language.
+Task 2 switches a global variable, led, between 0 and 1. Task 1 looks at the global variable and toggles the red and green led's according to its value.<br><br>
+Processing time is given to other functions by calling the sleep command. We use the main procedure to call the tasks using the call task command, and then we enter an infinite loop which shares the processor time around all of the active tasks.<br><br>
+dim led as byte<br>
+dim stacktask1(1 to 32) as byte<br>
+dim stacktask2(1 to 32) as byte<br><br>
+ 
+sub main()<br>
+calltask "task1", Stacktask1<br>
+calltask "task2", Stacktask2<br><br>
+ 
+do<br>
+call sleep(2.0) 'do nothing and give all time to other tasks<br>
+loop<br><br>
+ 
+end sub<br><br>
+ 
+sub task1()<br>
+do<br>
+call sleep(0.0) 'allow other tasks to run<br><br>
+ 
+if(led=1)then 'turn on/off led<br>
+call putpin(25,1)<br>
+call putpin(26,0)<br>
+end if<br><br>
+ 
+if(led=0)then<br>
+call putpin(25,0)<br>
+call putpin(26,1)<br>
+end if<br>
+loop<br>
+end sub<br><br>
+ 
+sub task2()<br>
+do 'Set global variable LED<br>
+call sleep(1.0)<br>
+led=1<br><br>
+ 
+call sleep(1.0)<br>
+led=0<br>
+loop<br>
+end sub<br><br>
+Multitasking has some draw backs to sequential programming; mainly multitasking software generally uses more memory as each process is allocated its own stack. Also, because the processor is frequently switching tasks software can run slightly slower. However these are small limitations when compared to the powerful system of multitasking.<br> 
+		
+		</p>
+		
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+	</body>
+	</html>
+
+	

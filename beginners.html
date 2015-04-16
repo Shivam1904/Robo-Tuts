@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Beginners</title>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="jquery.mobile-1.3.2.min.css"/>
+	<script src="jquery-1.9.1.min.js"></script>
+	<script src="jquery.mobile-1.3.2.min.js"></script>
+	
+	<style>
+	h2{
+	align: center;
+	}
+	</style>
+</head>
+
+<body>
+
+<div data-role="page" id="page1" data-theme="a">
+<b> <h1 data-role="header" color="yellow" align="center">Level 2: Beginners</h1></b>
+<h2 data-role="header" align="center" color="orange">Hardware Tutorials</h2>
+			<a data-role="button" href="#page2" data-transition="flip" data-icon="forward"> Robot Brains 
+</a>
+			<a data-role="button" href="#page3" data-transition="flip" data-icon="forward"> Motors
+</a>
+				<a data-role="button" href="#page4" data-transition="flip" data-icon="forward">Sensors 
+ </a>
+					<a data-role="button" href="#page5" data-transition="flip" data-icon="forward">Bodywork 
+</a>
+<h2 data-role="header"align="center" color="orange">Programming Tutorials</h2>
+						<a data-role="button" href="#page6" data-transition="flip" data-icon="forward"> Introduction 
+</a>
+						<a data-role="button" href="#page7" data-transition="flip" data-icon="forward"> Variables 
+</a>
+						<a data-role="button" href="#page8" data-transition="flip" data-icon="forward"> Loops and Conditional Statements </a>
+<a data-role="button" href="C:\Users\singhal\Desktop\my app\tute1.html" data-transition="flip" data-icon="back"> Back</a>
+</div>
+
+
+<div data-role="page" id="page2" data-theme="b">
+		<h1 data-role="header" align="center">Robot Brains </h1>
+		<p data-role="content"> 
+		Building robots is great fun, but just imagine a robot that can 'think' for its self. Adding a brain to your robot need not be a hard process, and will allow your robot to follow instructions and rules. Basically, robot brains come in two forms, analogue and digital.
+		
+		
+<br><br><h2 data-role="header" align="center">Analogue Brains</h2><br>
+
+
+It is possible to control your robots actuators (motors etc) using 'hard wired' circuits. By making circuits from capacitors, transistors and resistors you can make robots that can follow simple rules. For example, if they hit a wall a simple switch positioned on the front of the robot would be pressed in and the robot would be able to reverse and turn, hopefully avoiding the obstacle on its next pass.
+Analogue brains have their disadvantages though. They require quite a good knowledge of electronics to design, and once they are built are very difficult to change. If you want to change the behavior of your design you will probably need to totally rebuild your analogue brain.
+<br><br>Analogue circuits are generally not recommended for beginners in electronics or robotics.<br><br>
+Luckily for experimental roboticists there is another option: Digital Brains<br><br>
+<h2 data-role="header" align="center">Digital Brains</h2><br>
+Devices called micro controllers make perfect 'brains' for robots. They are small computers on a single chip, containing their own memory and processor, and can be programmed by a PC to control your robot in any way you can imagine.
+What makes micro controllers so good is that they can be re programmed again and again with just a click of a mouse. There is no need to get the soldering iron out and start messing with components like analogue circuits.
+Programming these chips is fairly easy to learn, but may take a bit of patience to fully understand. Learning to program by sticking your head in a textbook and trying to memorize programs is a very slow and boring way to learn. By far the easiest way to master programming is to have a go, work through a few tutorials and try out some examples. By playing about and trying ideas you'll soon get an understanding of how programs work, and how you can write your own.
+		
+		</p>
+		<a data-role="button" href="#page3" data-transition="flip" data-icon="forward">Motors </a>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+	
+
+	
+	<div data-role="page" id="page3" data-theme="b">
+		<h1 data-role="header" align="center">Motors </h1>
+		<p data-role="content"> 
+		Motors are one of the most common methods used to move robots around. They can be connected to gears and wheels and are a perfect way of adding mobility to your robot. There are many types of motor, and this tutorial will cover the main ones useful for robotics.
+<br>
+<h2 data-role="header" align="center">DC Motors:</h2>
+These are the most common and easy to use motor available. They are connected to a power supply by two wires. The direction of the motor shaft rotates can be changed by reversing the polarity (swap the positive and negative wires) of the motor supply voltage.<br>
+Unfortunately motors use quite a bit of current, so you cant just plug them straight into your processor and expect them to work, the processor won't be able to supply the motor with enough current. We need to find a way of turning the motors on and off using the processor. This can be done by many methods, including transistors, relays or a motor driver chip. The Robocore contains two motor driver chips that can control up to 4 DC motors simultaneously. Connecting motors to the Robocore couldn't be simpler. Just connect the 2 wires of each motor to one of the motor outputs on the Robocore and your ready to go. The motor is controlled by 2 output pins on the processor, lets say pin 1 and pin 2. The motors direction can be changed by different outputs of the pins. See table below<br>
+<table border=4 align="center">
+<tr>
+<td>Pin 1 <td>Pin 2 <td> Motor Output </tr>
+<tr>
+<td>On
+<td>Off
+<td>Clockwise</tr>
+<tr><td>Off
+<td>On
+<td>Anti-Clockwise</tr>
+<tr><td>Off
+<td>Off
+<td>Motor Off</tr>
+</table>
+For help programming the chip to do this have a look at the motor programming guide.
+<br><h2 data-role="header" align="center">Servo Motors:</h2>
+
+<img src="images//bmotors.jpg" height="150" width="140" border=2 align="right"><br>
+Servo motors are perfect control motors, They can be told to rotate to a specific position, making them ideal for anything that requires precision movement. Most servo motors can rotate through about 90 to 180 degrees, some rotate through a full 360 degrees. Servo's however, are unable to continually rotate, meaning they can't be used for driving wheels, but their precision movement makes them ideal for powering legs, controlling rack and pinion steering and much more.
+ <br><br>
+ <img src="images//bmot.jpg" height="150" width="140" border=2 align="right"><br>
+ 
+Servo motors are totally self contained. They contain a motor, gearbox and driver electronics, meaning they can be controlled directly from a microcontroller, without the need for interface electronics. The picture to the left shows the inside of a servo. You can see the gears, motor and control circuitry.<br><br>
+ 
+Servos have 3 wires connected to them. 2 are for the power supply, usually between about 5 and 7 volts. The third wire is the control wire, which can be connected directly to the processor or micro controller (or an output of the Robocore). The position the servo rotates to can be controlled by sending pulses of electricity to the servo. Changing the delay between pulses directly controls the servos position.</p>
+		<br><br>
+		
+		<a data-role="button" href="#page4" data-transition="flip" data-icon="forward">Sensors </a>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+		
+		
+		</div>
+	
+
+	
+	<div data-role="page" id="page4" data-theme="b">
+		<h1 data-role="header" align="center">Sensors</h1>
+		<p data-role="content"> 
+		The world we live in is a complex place. We have many senses to help us to understand our surroundings. In order to safely move around robots also need some way of understanding their world. The easiest way of doing this is to add simple sensors to you robot.<br><br>
+<h2 data-role="header" align="center">Bump Sensor:</h2><img src="images//bsensor.gif" height="150" width="140" border=2 align="right">
+So, you've fitted some motors to your robot and its happily driving around but it probably keeps colliding with obstacles and getting stuck. You need a way for your robot to detect collisions and move around objects. Enter the humble bump sensor:<br>
+A bump sensor is probably one of the easiest ways of letting your robot know it's collided with something. The simplest way to do this is to fix a micro switch to the front of your robot in a way so that when it collides the switch will get pushed in, making an electrical connection. Normally the switch will be held open by an internal spring.<br>
+Micro switches are easy to connect to micro controllers because they are either off or on, making them digital. All micro controllers are digital, so this is a match made in heaven. Micro switch 'bump' sensors are easily connected to the Robocore, simply plug them into any free digital socket and away you go.<br>
+The following diagram shows a typical circuit for a micro switch bump sensor. The resistor is important because it holds the signal line at ground while the switch is off. Without it the signal line is effectively 'floating' because there is nothing connected to it, and may cause unreliable readings as the processor tries to decide if the line is on or off.<br><br><br>
+<br>
+
+<h2 data-role="header" align="center">Light Sensor:</h2>
+Light sensors are perfect for making your robot more interesting. With some light sensors you can make your robot follow a light, hide in the dark or even turn on some funky headlights if the light level got a bit low (under a table for example).<br>
+Light sensors are basically resistors that change their value according to how much light is shining onto them.<br>
+They are easy to connect to the Robocore, with a simple circuit they can be plugged straight into a free analogue socket. Getting results from them can't be simpler. Get the processor to take a reading from the socket that the sensors connected to. A high value means not much light is falling on the sensor; a low value means a lot of light is falling on the sensor.<br>
+		</p>
+		<a data-role="button" href="#page5" data-transition="flip" data-icon="forward">Bodywork </a>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+
+	
+	<div data-role="page" id="page5" data-theme="b">
+		<h1 data-role="header" align="center">Bodywork </h1>
+		<p data-role="content"> 
+		So now you've learned about how to use some electronics to make a thinking control station for your robot but you've still got the problem of building a platform to carry all of your bits around on.<br>
+Have a look around our shop for some ideas about what to make your robot out of. If you're not confident about making your robot from scratch we sell a strong plastic chassis that's an ideal base for most projects.<br>
+A great way of building a robot chassis is to hit the garage. Find any scrap you can and get building. It's amazing what you can do with a bit of imagination and some of the stuff you've probably got lying about. I made one of my favorite robots out of an old hard drive cage. With a bit of chopping and sawing I screwed on a couple of motors and gearboxes, fixed some wheels from an old toy car and I had a great chassis.<br>
+Another good material for building robots is the famous Lego brick. It may not be the strongest material but it gives you the freedom to totally dismantle your robot and build something new. Electronics and batteries can be attached quite easily with elastic bands.<br>
+</p>
+		
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+
+	
+	<div data-role="page" id="page6" data-theme="b">
+		<h1 data-role="header" align="center">Introduction </h1>
+		<p data-role="content"> 
+		This is an introduction to programming using the BasicX micro controller, if you have never programmed before this will help you on your way. More experienced readers should still skim through this to get the basics of the language.<br>
+Programming is a common language between you and your Robocore, it lets you tell it what to do. In robotics, programming is necessary to make machines that can work by themselves, without human intervention. These are called autonomous robots.<br><b>
+1) Lets start by connecting your Robocore to the power supply and the serial port of your computer, and loading up the BasicX software.<br>
+2) When this is loaded, click on the Monitor Port menu and select the COM port that the Robocore is connected to (probably COM1). The Download Port menu should be set to the same COM port.<br>
+3) Click the editor button. A window should open asking for a filename. Just type a name for your first program, lets say Demoprog. It will tell you that the file does not exist, so do you want to create it. Click yes.<br></b>
+Now lets write our first program!<br>
+To test that the BasicX is working, we will make it send a message back to your computer. This is done using the debug.print command.<br>
+Type the following program into the editor window (or copy and paste it). The first and last lines should already be present, if they are just copy the middle line.<br>
+<b>Sub main()<br>
+debug.print "Robocore test: Everything is working"<br>
+End Sub<br></b>
+Before we can download to the BasicX we need to set the chip preferences. This basically tells the chip what we want to be doing with each pin (input, output etc). To do this click on the project menu, followed by chip (or the F7 shortcut). We can leave everything as it is for now so just click on OK.<br>
+Now click on the Compile menu and select Compile and Run (keyboard shortcut F5) This will send the code to the Robocore. Going back to the main BasicX window, you should see the text ' Robocore test: Everything is working ' appear on the screen.<br>
+The Sub main() and End Sub commands tell the Robocore where the program begins and ends.<br>
+The debug.print command is very useful for telling us what the Robocore is doing, in the next case we will see more of its capabilities<br>
+Now we will make the Robocore solve an equation for us. To do this we will need a variable. This is a value stored under a name in the memory of the Robocore. We will give this variable the name ' answer '.<br><b>
+Sub main()<br>
+Dim answerI As integer ' declaring<br>
+Dim answer As string ' variables<br>
+answerI = 5*5 ' doing the maths<br>
+answer=Cstr(answerI) 'convert to printable format<br>
+debug.print "5 times 5 is "; answer 'print answer<br>
+End Sub<br></b>
+Run the program as before and you should get the computer telling you the answer.<br>
+This program shows that you can print values from your program to the screen using debug.print just by adding a semi-colon and the variable name after the "text", this is very handy for example when testing sensors.<br>
+The program also uses comments, these have no effect on the program but allow us to add information about each line of the program. The computer ignores everything written on the line after an apostrophe (').<br>
+		</p>
+		<a data-role="button" href="#page7" data-transition="flip" data-icon="forward">Variables </a>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+
+	
+	<div data-role="page" id="page7" data-theme="b">
+		<h1 data-role="header" align="center">Variables </h1>
+		<p data-role="content"> 
+		Variables are values stored in computer memory. We need to use them for almost every program to allow the Robocore to remember things. There are various different types of values, for example strings, which are text values, and integers, which are whole number values.<br>
+The computer needs you to tell it what type of value you want to use, otherwise it will get confused.<br>
+Each type of variable has its uses and limitations, which is why there are simple methods for switching between variable types. This was shown in the last tutorial, lets look at that program again line by line.<br>
+<b><br>
+Sub main()<br>
+Dim answerI As integer ' declaring<br>
+Dim answer As string ' variables</b><br><br>
+ 
+The Dim lines declare the variables, that means they set them up for use in the program. The type of variable must be specified using the ' As ' keyword. Here we have an integer and a string.<br>
+<b>answerI = 5*5 ' doing the math</b><br><br>
+Here the integer variable is used, this is because mathematical functions can be performed using it such as multiplication<br>
+<b>answer=Cstr(answerI) 'convert to printable format</b><br><br>
+Using the CStr statement the integer value held in answerI is converted into a string and held in answer, this is a text variable allowing the answer to be printed to the screen using debug.print.<br><br>
+<b>debug.print "5 times 5 is "; answer 'print answer<br>
+End Sub</b><br><br>
+ 
+Variables can have nearly any name, but you cannot use words that are otherwise used in the programming language, and it is best to keep them simple, either a single letter, or a word describing what the variable does.<br><br>
+Other types of variables are available. One of the types used commonly in robotics is the Boolean variable. This provides us with a true or false value.<br>
+For example a bump sensor will either be pressed or not pressed, so the Boolean variable for it will either be true (pressed) or false.<br>
+We set up Boolean variables using the following statement<br><br>
+<b>Dim variable As Boolean.<br>
+variable = true<br><br>
+ </b>
+Boolean logic is commonly used with conditional statements, these are covered in the next section.<br><br>
+There is also the Single variable type, which allows floating point numbers e.g 2.43 or -0.66, this is occasionally useful in robotics when more maths is necessary.<br><br>
+		</p>
+		<a data-role="button" href="#page8" data-transition="flip" data-icon="forward">Loops and Conditional Statements </a>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+
+	
+	<div data-role="page" id="page8" data-theme="b">
+		<h1 data-role="header" align="center">Loops and Conditional Statements  </h1>
+		<p data-role="content"> 
+		
+	Until now our programming has been limited to running through the code once, and then the program stops functioning. This is clearly not suitable for a robot, which must be able to follow it's commands continuously for the length of time it is switched on. To do this we use loops.<br><br>
+We also want our robots to make decisions based on data from its sensors, for this we need conditional statements. Loops themselves contain conditional statements in order to tell them when to run and how long to continue.<br><br>
+There are several different loop commands, letting us control the function of the robot in a variety of ways.<br><br>
+<h4 data-role="header" color="blue" >Do Loops:</h4><br><br>
+The simple Do loop can be used to enclose your whole program, when it reaches the end of the code it returns to the beginning and starts again. We can apply this to our program used in the introduction.<br>
+<b><br><br>
+Sub main()<br>
+Dim answer As string<br>
+Dim answerI As integer<br><br>
+
+Do 'start of loop<br><br>
+ 
+answerI = 5*5<br>
+answer=Cstr(answerI)<br>
+debug.print "The answer is "; answer<br><br>
+ 
+Loop ' end of loop<br>
+End Sub<br></b><br>
+ 
+As you will see when you run this program, the statement is no longer displayed once, but continues to print as long as the program runs (you should press the reset button to stop it)
+Now for something slightly more useful. We can add a conditional statement to the do loop by using a ' while ' statement. This lets us tell the Robocore when to stop looping.
+<br><b>Sub main()<br>
+ <br>
+Dim answerI As integer<br>
+Dim answer As string<br>
+Dim i As integer<br>
+i=0<br><br>
+ 
+Do While (i < 10)<br>
+answerI = 5*5<br>
+answer=Cstr(answerI)<br>
+debug.print "The answer is "; answer<br>
+i=i+1<br>
+loop<br>
+ <br>
+End Sub<br>
+ <br>
+Using the conditional statement ' while ' and a new integer variable i we have made the Robocore loop only 10 times (note that as 10 is not less than 10 the program will stop after the I = 9 loop)<br></b><br>
+<h4 data-role="header" color="blue">For Loop:</h4><br><br>
+We can set up the same loop using the for statement remove the Do while, Loop and i=i+1 lines and replace them with:
+<br><br>Do While :  For I = 1 to 10 Step 1<br>
+Loop  : Next<br><br>
+The loop runs from 1 to 10 stepping up 1 each loop, this removes the need for the line I=I+1.<br>
+Run the program to check that you have got it right.<br>
+Now for something a little more complex, instead of just doing one sum, we can automate the Robocore to do 10 different sums for us by changing the equation to
+AnswerI = I*5<br><br>
+Now the Robocore takes the number of loops completed and multiplies it by five. When you run this program you should now get the answers 5,10,15 up to 50.<br><br>
+<h4 data-role="header" color="blue">If Statement:</h4><br><br>
+We can run a conditional statement without using a loop with an if statement. These are used as follows<br><br>
+<b>Const switch as Byte = 5<br>
+Sub Main()<br>
+Do<br><br>
+ 
+if (GetPin(switch)=1) then<br>
+debug.print"switch pressed" <br>
+call sleep(0.15)<br>
+end if<br>
+<br>
+Loop<br>
+End Sub<br><br>
+ </b>
+The best way to learn is to experiment, make your own program with what you've learnt and you'll soon feel more confident
+<br>
+</p>
+		<a data-role="button" href="#page1" data-transition="flip" data-icon="back"> Back</a>
+
+		
+	</div>
+	</body>
+	</html>
+	
